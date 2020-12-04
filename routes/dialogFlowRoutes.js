@@ -9,7 +9,7 @@ const sessionPath = sessionClient.sessionPath(
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    res.send({ hello: "Johnny" });
+    res.send({ hello: "Johnny Bravo" });
   });
 
   app.post("/api/text-query", async (req, res) => {
@@ -18,7 +18,7 @@ module.exports = (app) => {
       queryInput: {
         text: {
           // The query to send to the dialogflow agent
-          text: "Where is Toby?",
+          text: "Where is little toby?",
           // The language used by the client (en-US)
           languageCode: config.dialogFlowSessionLanguageCode,
         },
