@@ -1,7 +1,13 @@
-const express = require("express");
+require('dotenv').config();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const logger = require('morgan');
+const path = require('path');
+const cors = require('cors');
+const session = require('express-session');
 const app = express();
-const bodyParser = require("body-parser");
-const mongoose     = require('mongoose');
 const config = require ('./config/keys');
 const Registration = require('./models/Registration');
 
@@ -15,10 +21,34 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
+  app.use(logger('dev'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(cookieParser());
+
+  app.use(
+    session({
+      secret: 'projectapp',
+      cookie: {
+        expire: 60000,
+      },
+      rolling: true,
+    })
+  );
+
+  app.use(
+    cors({
+      credentials: true,
+      origin: ["http://localhost:3000"],
+    })
+  );
+
+const authRoutes = require('./routes/authRoutes');
+app.use('/api', authRoutes);
 
 
-app.use(bodyParser.json());
-require("./routes/dialogFlowRoutes")(app);
+const dialogFlowRoutes = require('./routes/dialogFlowRoutes');
+app.use('/', dialogFlowRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
