@@ -7,10 +7,10 @@ const router = express.Router();
     res.send({ hello: "Johnny Bravo" });
   });*/
 
-  router.get("/", (req, res) => {
+ /* router.get("/", (req, res) => {
     res.send({ hello: "Johnny Bravo" });
 
-  });
+  });*/
 
   router.post("/api/text-query", async (req, res) => {
     let responses = await chatbot.textQuery(req.body.text, req.body.cookiesId, req.body.parameters);
