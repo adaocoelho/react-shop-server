@@ -46,7 +46,7 @@ app.use(cors());
     })
   );*/
 
-router.all("*", (req,res,next) =>{
+app.all("*", (req,res,next) =>{
     if (req.originalUrl.startsWith('/api')) {
         // skip any /api routes
         next();
