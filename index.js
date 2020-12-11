@@ -10,6 +10,7 @@ const session = require("express-session");
 const app = express();
 const config = require("./config/keys");
 const Registration = require("./models/Registration");
+const User = require('./models/User')
 
 mongoose
   .connect(config.mongoURI, { useNewUrlParser: true })
@@ -72,7 +73,7 @@ app.get('*', (req, res) => {
 });
 }*/
 
-if (process.env.NODE_ENV === "production") {
+/*if (process.env.NODE_ENV === "production") {
 app.get("*", (req,res) =>{
   if (req.originalUrl.startsWith('/api')) {
       // skip any /api routes
@@ -81,9 +82,9 @@ app.get("*", (req,res) =>{
     express.static(path.join(__dirname, '../dist/index.html'));
   }
 })
-}
+}*/
 
-
+app.get('/', (req,res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 
 /*if (process.env.NODE_ENV === "production") {
   app.use(express.static("./dist/build")); // js and css files
@@ -98,9 +99,9 @@ app.get("*", (req,res) =>{
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
-const PORT = process.env.PORT || '8080'
-//app.listen(PORT);
-app.set("port", PORT)
+const PORT = process.env.PORT || 5000
+app.listen(PORT);
+
 
 //set GOOGLE_APPLICATION_CREDENTIALS=/mnt/c/users/Adão\ Coelho/code/mycodingjunk/shopreactserver/dialogflow-keys/tobyhawkagent-dxih-2be0764e43e3.json
 
