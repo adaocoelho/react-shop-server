@@ -46,14 +46,14 @@ app.use(cors());
     })
   );*/
 
-/*router.all("*", (req,res,next) =>{
+router.all("*", (req,res,next) =>{
     if (req.originalUrl.startsWith('/api')) {
         // skip any /api routes
         next();
     } else {
-      res.sendFile(path.join(__dirname, '../dist/index.html'));
+      res.sendFile(path.join(__dirname, '../dist/build'));
     }
-  }) */
+  }) 
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
@@ -73,7 +73,7 @@ app.use("/", fulfillmentRoutes);
   });
 }*/
 
-express.static(path_join(__dirname, '../dist/build'));
+/*express.static(path_join(__dirname, '../dist/build'));*/
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
