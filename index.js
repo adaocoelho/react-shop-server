@@ -46,15 +46,14 @@ app.use(cors());
     })
   );*/
 
- router.all("*", (req,res,next) =>{
+/*router.all("*", (req,res,next) =>{
     if (req.originalUrl.startsWith('/api')) {
         // skip any /api routes
         next();
     } else {
       res.sendFile(path.join(__dirname, '../dist/index.html'));
     }
-  }) 
-
+  }) */
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
@@ -65,14 +64,14 @@ app.use("/", dialogFlowRoutes);
 const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 app.use("/", fulfillmentRoutes);
 
-/*if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("dist/build")); // js and css files
   // index.html for all page routes
   const path = require("path");
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+    res.sendFile(path.resolve(__dirname, "../dist/index.html"));
   });
-}*/
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
