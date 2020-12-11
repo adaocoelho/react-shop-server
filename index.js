@@ -46,14 +46,19 @@ app.use(cors());
     })
   );*/
 
-app.all("*", (req,res,next) =>{
+/*app.all("*", (req,res,next) =>{
     if (req.originalUrl.startsWith('/api')) {
         // skip any /api routes
         next();
     } else {
       res.sendFile(path.join(__dirname, '../dist/build'));
     }
-  }) 
+  }) */
+
+  app.get('*', function (req, res) {
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index);
+  });
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
