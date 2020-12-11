@@ -73,7 +73,7 @@ app.use("/", fulfillmentRoutes);
   });
 }*/
 
-express.static(path_join(__dirname, '../dist/build')):
+express.static(path_join(__dirname, '../dist/build'));
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
