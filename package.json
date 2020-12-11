@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "backend": "nodemon index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix dist && npm run build --prefix dist"
+    "backend": "nodemon index.js"
 
   },
   "author": "",

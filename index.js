@@ -46,19 +46,11 @@ app.use(cors());
     })
   );*/
 
-/*app.all("*", (req,res,next) =>{
-    if (req.originalUrl.startsWith('/api')) {
-        // skip any /api routes
-        next();
-    } else {
-      res.sendFile(path.join(__dirname, '../dist/build'));
-    }
-  }) */
 
-  app.get('*', function (req, res) {
+  /*app.get('*', function (req, res) {
     const index = path.join(__dirname, 'build', 'index.html');
     res.sendFile(index);
-  });
+  });*/
 
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
@@ -70,7 +62,7 @@ const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 app.use("/", fulfillmentRoutes);
 
 
-if (process.env.NODE_ENV === 'production') {
+/*if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('dist/build'));
 
@@ -78,8 +70,18 @@ const path = require("path");
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'build', 'index.html'));
 });
-}
+}*/
 
+if (process.env.NODE_ENV === "production") {
+app.get("*", (req,res,next) =>{
+  if (req.originalUrl.startsWith('/api')) {
+      // skip any /api routes
+      next();
+  } else {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  }
+})
+}
 
 
 
@@ -100,3 +102,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
 //set GOOGLE_APPLICATION_CREDENTIALS=/mnt/c/users/Adão\ Coelho/code/mycodingjunk/shopreactserver/dialogflow-keys/tobyhawkagent-dxih-2be0764e43e3.json
+
