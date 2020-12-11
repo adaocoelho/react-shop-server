@@ -84,7 +84,9 @@ app.get("*", (req,res) =>{
 })
 }*/
 
-app.get('/', (req,res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
+router.get("/", function(request, response) {
+  response.sendFile(__dirname + "/dist/index.html");
+});
 
 /*if (process.env.NODE_ENV === "production") {
   app.use(express.static("./dist/build")); // js and css files
