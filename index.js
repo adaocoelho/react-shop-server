@@ -53,6 +53,11 @@ app.use(cors());
     res.sendFile(index);
   });*/
 
+
+  app.get("/dist", function(request, response) {
+    response.sendFile(__dirname + "/dist/index.html");
+  });
+
 const authRoutes = require("./routes/authRoutes");
 app.use("/api", authRoutes);
 
@@ -84,9 +89,7 @@ app.get("*", (req,res) =>{
 })
 }*/
 
-app.get("/", function(request, response) {
-  response.sendFile(__dirname + "/dist/build/index.html");
-});
+
 
 /*if (process.env.NODE_ENV === "production") {
   app.use(express.static("./dist/build")); // js and css files
