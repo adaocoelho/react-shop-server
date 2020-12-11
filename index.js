@@ -61,9 +61,6 @@ app.use("/", dialogFlowRoutes);
 const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 app.use("/", fulfillmentRoutes);
 
-const index = require('./dist/index');
-app.use('/', index);
-
 
 /*if (process.env.NODE_ENV === 'production') {
   //set static folder
@@ -75,7 +72,7 @@ app.get('*', (req, res) => {
 });
 }*/
 
-if (process.env.NODE_ENV === "production") {
+/*if (process.env.NODE_ENV === "production") {
 app.get("*", (req,res) =>{
   if (req.originalUrl.startsWith('/api')) {
       // skip any /api routes
@@ -84,7 +81,8 @@ app.get("*", (req,res) =>{
     express.static(path.join(__dirname, '../dist/index.html'));
   }
 })
-}
+}*/
+
 
 
 /*if (process.env.NODE_ENV === "production") {
@@ -100,8 +98,9 @@ app.get("*", (req,res) =>{
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+const PORT = process.env.PORT || '5000'
+//app.listen(PORT);
+app.set("port", PORT)
 
 //set GOOGLE_APPLICATION_CREDENTIALS=/mnt/c/users/Adão\ Coelho/code/mycodingjunk/shopreactserver/dialogflow-keys/tobyhawkagent-dxih-2be0764e43e3.json
 
