@@ -73,6 +73,7 @@ app.get('*', (req, res) => {
 }*/
 
 if (process.env.NODE_ENV === "production") {
+  console.log('OLA OLA')
 app.get("*", (req,res) =>{
   if (req.originalUrl.startsWith('/api')) {
       // skip any /api routes
