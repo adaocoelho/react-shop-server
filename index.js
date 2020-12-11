@@ -98,7 +98,7 @@ app.get("*", (req,res) =>{
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || '8080'
 //app.listen(PORT);
 app.set("port", PORT)
 
