@@ -84,7 +84,6 @@ app.get("*", (req,res,next) =>{
 }
 
 
-
 /*if (process.env.NODE_ENV === "production") {
   app.use(express.static("./dist/build")); // js and css files
   // index.html for all page routes
