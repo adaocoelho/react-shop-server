@@ -73,12 +73,12 @@ app.use("/", fulfillmentRoutes);
 if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('dist/build'));
-}
+
 const path = require("path");
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'build', 'index.html'));
 });
-
+}
 
 
 
