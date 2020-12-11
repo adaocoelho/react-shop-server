@@ -54,7 +54,7 @@ app.use(cors());
   });*/
 
 
-  app.get("/dist", function(request, response) {
+app.get("/index", function(request, response) {
     response.sendFile(__dirname + "/dist/index.html");
   });
 
