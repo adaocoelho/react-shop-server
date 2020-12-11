@@ -78,7 +78,7 @@ app.get("*", (req,res,next) =>{
       // skip any /api routes
       next();
   } else {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    express.static(path.join(__dirname, '../dist/index.html'));
   }
 })
 }
