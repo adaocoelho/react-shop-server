@@ -69,6 +69,19 @@ app.use("/", dialogFlowRoutes);
 const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 app.use("/", fulfillmentRoutes);
 
+
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('dist/build'));
+}
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'build', 'index.html'));
+});
+
+
+
+
+
 /*if (process.env.NODE_ENV === "production") {
   app.use(express.static("./dist/build")); // js and css files
   // index.html for all page routes
