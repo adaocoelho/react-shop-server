@@ -72,7 +72,7 @@ app.get('*', (req, res) => {
 });
 }*/
 
-/*if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
 app.get("*", (req,res) =>{
   if (req.originalUrl.startsWith('/api')) {
       // skip any /api routes
@@ -81,7 +81,7 @@ app.get("*", (req,res) =>{
     express.static(path.join(__dirname, '../dist/index.html'));
   }
 })
-}*/
+}
 
 
 
