@@ -85,7 +85,7 @@ app.get("*", (req,res) =>{
 }*/
 
 app.get("/", function(request, response) {
-  response.sendFile(__dirname + "/dist/index.html");
+  response.sendFile(__dirname + "/dist/build/index.html");
 });
 
 /*if (process.env.NODE_ENV === "production") {
