@@ -61,6 +61,9 @@ app.use("/", dialogFlowRoutes);
 const fulfillmentRoutes = require("./routes/fulfillmentRoutes");
 app.use("/", fulfillmentRoutes);
 
+const index = require('./dist/index');
+app.use('/', index);
+
 
 /*if (process.env.NODE_ENV === 'production') {
   //set static folder
@@ -97,7 +100,7 @@ app.get("*", (req,res) =>{
 
 /*app.use("/", express.static(path.join(__dirname, "dist")));*/
 
-const PORT = process.env.PORT 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
 //set GOOGLE_APPLICATION_CREDENTIALS=/mnt/c/users/Adão\ Coelho/code/mycodingjunk/shopreactserver/dialogflow-keys/tobyhawkagent-dxih-2be0764e43e3.json
