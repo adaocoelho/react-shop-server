@@ -73,7 +73,7 @@ app.get('*', (req, res) => {
 }*/
 
 if (process.env.NODE_ENV === "production") {
-app.get("*", (req,res,next) =>{
+app.get("*", (req,res) =>{
   if (req.originalUrl.startsWith('/api')) {
       // skip any /api routes
       next();
