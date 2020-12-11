@@ -67,9 +67,9 @@ app.use("/", fulfillmentRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("dist/build")); // js and css files
   // index.html for all page routes
-  const path = require("path");
+  const path = require("path"); 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../dist/index.html"));
+    res.sendFile(path.join(__dirname, "./dist/index.html"));
   });
 }
 
