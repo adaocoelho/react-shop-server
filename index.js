@@ -84,7 +84,7 @@ app.get("*", (req,res) =>{
 })
 }*/
 
-router.get("/", function(request, response) {
+app.get("/", function(request, response) {
   response.sendFile(__dirname + "/dist/index.html");
 });
 
